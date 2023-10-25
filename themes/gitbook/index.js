@@ -110,7 +110,7 @@ const LayoutBase = (props) => {
                             </Transition>
 
                             {/* Google广告 */}
-                            <AdSlot type='in-article' />
+                            <AdSlot type='native' />
                             <WWAds className='w-full' orientation='horizontal'/>
 
                             {/* 回顶按钮 */}
