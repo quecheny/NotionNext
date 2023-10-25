@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useLayoutEffect } from 'react'
 import { useGlobal } from '@/lib/global'
 import BLOG from '@/blog.config'
 import useWindowSize from '@/hooks/useWindowSize'
-
+import { saveDarkModeToCookies } from '@/themes/theme'
 /**
  * 自定义右键菜单
  * @param {*} props
