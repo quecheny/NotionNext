@@ -189,7 +189,13 @@ const LayoutIndex = (props) => {
     })
   }, [])
 
-  return <LayoutBase {...props} />
+  return (
+    <LayoutBase {...props}>
+      <div className='w-full text-center mt-10'>
+        <h2>Hello! Welcome to Andy yang - chenoiLab Book!!!</h2>
+      </div>
+    </LayoutBase>
+  )
 }
 
 /**
