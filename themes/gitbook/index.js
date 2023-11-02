@@ -41,6 +41,24 @@ const WWAds = dynamic(() => import('@/components/WWAds'), { ssr: false })
 const ThemeGlobalGitbook = createContext()
 export const useGitBookGlobal = () => useContext(ThemeGlobalGitbook)
 
+
+// 项目
+const projects = [
+  {
+    id: 1,
+    name: "Multi-Factors Models predicting Stock Price",
+    summary: "• Extracted stock data and factors using Tushare and Wind API (Python) • Developed XGBoost model for share price trend analysis (Python) • Backtested stock selection from 2021 to 2022 (Python)",
+    fields: "Data Analytics and Data Science, Finance, Machine Learning",
+    techStacks: "Python, Scikit-learn, Statistic, XGBoost, matplotlib",
+    collaboration: "Pair",
+    projectLink: "https://www.dropbox.com/scl/fi/0rerifupnx8c2k46o3p9c/.pptx?rlkey=yorh3ayt9exlrqdqgvni18lys&dl=0",
+    when: "01/03/2022"
+  },
+  // ... 其他项目
+];
+
+
+
 /**
  * 基础布局
  * 采用左右两侧布局，移动端使用顶部导航栏
@@ -188,14 +206,42 @@ const LayoutIndex = (props) => {
       }, 7 * 1000)
     })
   }, [])
-
+  
   return (
     <LayoutBase {...props}>
       <div className='w-full text-center mt-10'>
         <h2>Hello! Welcome to Andy yang - chenoiLab Book!!!</h2>
+        <table className="table-auto w-full mt-4">
+          <thead>
+            <tr>
+              <th>Project No.</th>
+              <th>Project Name</th>
+              <th>Summary</th>
+              <th>Fields</th>
+              <th>Tech Stacks</th>
+              <th>Collaboration</th>
+              <th>Project Link</th>
+              <th>When</th>
+            </tr>
+          </thead>
+          <tbody>
+            {projects.map(project => (
+              <tr key={project.id}>
+                <td>{project.id}</td>
+                <td>{project.name}</td>
+                <td>{project.summary}</td>
+                <td>{project.fields}</td>
+                <td>{project.techStacks}</td>
+                <td>{project.collaboration}</td>
+                <td><a href={project.projectLink} target="_blank" rel="noopener noreferrer">Link</a></td>
+                <td>{project.when}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </LayoutBase>
-  )
+);
 }
 
 /**
