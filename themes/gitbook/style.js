@@ -29,6 +29,11 @@ const Style = () => {
       background-color: #f2f2f2;
     }
 
+    .rotatingCube {
+      z-index: 10000; /* Adjust the value as needed */
+    }
+
+
   `}</style>
 }
 
