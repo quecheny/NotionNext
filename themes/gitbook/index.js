@@ -37,6 +37,7 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 const WWAds = dynamic(() => import('@/components/WWAds'), { ssr: false })
 import * as THREE from 'three';
+import React, { useRef } from 'react';
 
 // 主题全局变量
 const ThemeGlobalGitbook = createContext()
