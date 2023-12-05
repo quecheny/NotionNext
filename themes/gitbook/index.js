@@ -251,47 +251,49 @@ const LayoutIndex = (props) => {
     })
   }, [])
   
-  return (
-    <LayoutBase {...props}>
+return (
+  <LayoutBase {...props}>
+    <div className='w-full text-center mt-10'>
+      <h2>Hello! Welcome to Andy yang - chenoiLab Book!!!</h2>
       <div className='w-full text-center mt-10'>
-        <h2>Hello! Welcome to Andy yang - chenoiLab Book!!!</h2>
-        <div className='w-full text-center mt-10'>
         <h2>Thinking and Building the home page...</h2>
         <RotatingCube />
         {/* 其他内容 */}
-        </div>
-        // <table className="table-auto w-full mt-4">
-          // <thead>
-          //   <tr>
-          //     <th>Project No.</th>
-          //     <th>Project Name</th>
-          //     <th>Summary</th>
-          //     <th>Fields</th>
-          //     <th>Tech Stacks</th>
-          //     <th>Collaboration</th>
-          //     <th>Project Link</th>
-          //     <th>When</th>
-          //   </tr>
-          // </thead>
-          // <tbody>
-          //   {projects.map(project => (
-          //     <tr key={project.id}>
-          //       <td>{project.id}</td>
-          //       <td>{project.name}</td>
-          //       <td>{project.summary}</td>
-          //       <td>{project.fields}</td>
-          //       <td>{project.techStacks}</td>
-          //       <td>{project.collaboration}</td>
-          //       <td><a href={project.projectLink} target="_blank" rel="noopener noreferrer">Link</a></td>
-          //       <td>{project.when}</td>
-          //     </tr>
-          //   ))}
-          // </tbody>
-        // </table>
       </div>
-    </LayoutBase>
+      {/*
+      <table className="table-auto w-full mt-4">
+        <thead>
+          <tr>
+            <th>Project No.</th>
+            <th>Project Name</th>
+            <th>Summary</th>
+            <th>Fields</th>
+            <th>Tech Stacks</th>
+            <th>Collaboration</th>
+            <th>Project Link</th>
+            <th>When</th>
+          </tr>
+        </thead>
+        <tbody>
+          {projects.map(project => (
+            <tr key={project.id}>
+              <td>{project.id}</td>
+              <td>{project.name}</td>
+              <td>{project.summary}</td>
+              <td>{project.fields}</td>
+              <td>{project.techStacks}</td>
+              <td>{project.collaboration}</td>
+              <td><a href={project.projectLink} target="_blank" rel="noopener noreferrer">Link</a></td>
+              <td>{project.when}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      */}
+    </div>
+  </LayoutBase>
 );
-}
+
 
 /**
  * 文章列表 无
