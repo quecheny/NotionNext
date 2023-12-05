@@ -69,17 +69,31 @@ const RotatingCube = () => {
 
     // 创建场景
     const scene = new THREE.Scene();
+
     // 创建摄像头
     const camera = new THREE.PerspectiveCamera(75, currentMount.clientWidth / currentMount.clientHeight, 0.1, 1000);
-    // 创建渲染器
-    const renderer = new THREE.WebGLRenderer();
+
+    // 创建渲染器并设置透明背景
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(currentMount.clientWidth, 400);
     currentMount.appendChild(renderer.domElement);
 
-    // 创建几何体
+    // 添加光源
+    const light = new THREE.PointLight(0xffffff, 1, 100);
+    light.position.set(10, 10, 10);
+    scene.add(light);
+
+    // 创建几何体和材质
     const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
+    const materials = [
+      new THREE.MeshPhongMaterial({ color: 0xff0000 }),
+      new THREE.MeshPhongMaterial({ color: 0x00ff00 }),
+      new THREE.MeshPhongMaterial({ color: 0x0000ff }),
+      new THREE.MeshPhongMaterial({ color: 0xffff00 }),
+      new THREE.MeshPhongMaterial({ color: 0x00ffff }),
+      new THREE.MeshPhongMaterial({ color: 0xff00ff })
+    ];
+    const cube = new THREE.Mesh(geometry, materials);
     scene.add(cube);
 
     camera.position.z = 5;
@@ -103,6 +117,7 @@ const RotatingCube = () => {
 
   return <div ref={mountRef} />;
 };
+
 
 /**
  * 基础布局
