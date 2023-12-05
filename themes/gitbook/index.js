@@ -256,7 +256,7 @@ const LayoutIndex = (props) => {
       <div className='w-full text-center mt-10'>
         <h2>Hello! Welcome to Andy yang - chenoiLab Book!!!</h2>
         <div className='w-full text-center mt-10'>
-        <h2>正在建设中...</h2>
+        <h2>Thinking and Building the home page...</h2>
         <RotatingCube />
         {/* 其他内容 */}
         </div>
