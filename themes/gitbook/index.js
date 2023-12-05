@@ -36,6 +36,7 @@ import BlogPostListPage from './components/BlogPostListPage'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 const WWAds = dynamic(() => import('@/components/WWAds'), { ssr: false })
+import * as THREE from 'three';
 
 // 主题全局变量
 const ThemeGlobalGitbook = createContext()
@@ -58,6 +59,49 @@ const projects = [
 ];
 
 
+
+const RotatingCube = () => {
+  const mountRef = useRef(null);
+
+  useEffect(() => {
+    const currentMount = mountRef.current;
+
+    // 创建场景
+    const scene = new THREE.Scene();
+    // 创建摄像头
+    const camera = new THREE.PerspectiveCamera(75, currentMount.clientWidth / currentMount.clientHeight, 0.1, 1000);
+    // 创建渲染器
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(currentMount.clientWidth, 400);
+    currentMount.appendChild(renderer.domElement);
+
+    // 创建几何体
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    camera.position.z = 5;
+
+    // 动画循环
+    const animate = function () {
+      requestAnimationFrame(animate);
+
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    return () => {
+      currentMount.removeChild(renderer.domElement);
+    };
+  }, []);
+
+  return <div ref={mountRef} />;
+};
 
 /**
  * 基础布局
@@ -211,34 +255,39 @@ const LayoutIndex = (props) => {
     <LayoutBase {...props}>
       <div className='w-full text-center mt-10'>
         <h2>Hello! Welcome to Andy yang - chenoiLab Book!!!</h2>
-        <table className="table-auto w-full mt-4">
-          <thead>
-            <tr>
-              <th>Project No.</th>
-              <th>Project Name</th>
-              <th>Summary</th>
-              <th>Fields</th>
-              <th>Tech Stacks</th>
-              <th>Collaboration</th>
-              <th>Project Link</th>
-              <th>When</th>
-            </tr>
-          </thead>
-          <tbody>
-            {projects.map(project => (
-              <tr key={project.id}>
-                <td>{project.id}</td>
-                <td>{project.name}</td>
-                <td>{project.summary}</td>
-                <td>{project.fields}</td>
-                <td>{project.techStacks}</td>
-                <td>{project.collaboration}</td>
-                <td><a href={project.projectLink} target="_blank" rel="noopener noreferrer">Link</a></td>
-                <td>{project.when}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div className='w-full text-center mt-10'>
+        <h2>正在建设中...</h2>
+        <RotatingCube />
+        {/* 其他内容 */}
+        </div>
+        // <table className="table-auto w-full mt-4">
+          // <thead>
+          //   <tr>
+          //     <th>Project No.</th>
+          //     <th>Project Name</th>
+          //     <th>Summary</th>
+          //     <th>Fields</th>
+          //     <th>Tech Stacks</th>
+          //     <th>Collaboration</th>
+          //     <th>Project Link</th>
+          //     <th>When</th>
+          //   </tr>
+          // </thead>
+          // <tbody>
+          //   {projects.map(project => (
+          //     <tr key={project.id}>
+          //       <td>{project.id}</td>
+          //       <td>{project.name}</td>
+          //       <td>{project.summary}</td>
+          //       <td>{project.fields}</td>
+          //       <td>{project.techStacks}</td>
+          //       <td>{project.collaboration}</td>
+          //       <td><a href={project.projectLink} target="_blank" rel="noopener noreferrer">Link</a></td>
+          //       <td>{project.when}</td>
+          //     </tr>
+          //   ))}
+          // </tbody>
+        // </table>
       </div>
     </LayoutBase>
 );
